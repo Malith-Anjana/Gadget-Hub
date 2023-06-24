@@ -2,9 +2,9 @@ import { Box } from "@mui/material";
 const Rightbar = () => {
   return (
     <Box
-      flex={2}
+      flex={1}
       bgcolor={"yellow"}
-      p={2}
+      pt={1}
       sx={{ display: { xs: "none", sm: "block" } }}
     >
       <div>dfsf</div>

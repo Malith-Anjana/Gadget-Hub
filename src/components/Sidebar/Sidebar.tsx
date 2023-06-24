@@ -10,13 +10,13 @@ import {
   ListItem,
 } from "@mui/material";
 
-import { ModeNight, Send, Drafts, Inbox, BeachAccess, Work, Image } from "@mui/icons-material";
+import { ModeNight,BeachAccess, Work, Image } from "@mui/icons-material";
 const Sidebar = () => {
   return (
     <Box
       flex={1}
       bgcolor={"skyblue"}
-      p={2}
+      pt={1}
       sx={{ display: { xs: "none", sm: "block" } }}
     >
       <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>

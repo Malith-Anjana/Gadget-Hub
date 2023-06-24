@@ -1,22 +1,20 @@
-import { Button, Typography } from "@mui/material"
-
+import Navbar from "./components/Navbar/Navbar";
+import Rightbar from "./components/Rightbar/Rightbar";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import Products from './components/Products/Products'
 function App() {
-
   return (
-    <>
-
-    <Button variant="text" color="secondary">Text</Button>
-<Button variant="contained">Contained</Button>
-<Button variant="outlined">Outlined</Button>
-  
-<Typography variant="h1" component="p">
-  <h5>
-    Hi
-  </h5>
-</Typography>;
-
-  </>
-  )
+    <Box>
+      <Navbar/>
+      <Stack direction="row" spacing={2} justifyContent={"space-between"}>
+        <Sidebar />
+        <Products/>
+        <Rightbar />
+      </Stack>
+    </Box>
+  );
 }
 
-export default App
+export default App;

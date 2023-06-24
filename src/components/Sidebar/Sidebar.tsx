@@ -1,4 +1,16 @@
-import { Box } from "@mui/material";
+import {
+  Box,
+  ListItemAvatar,
+  Avatar,
+  List,
+  ListItemText,
+  ListItemButton,
+  ListItemIcon,
+  Switch,
+  ListItem,
+} from "@mui/material";
+
+import { ModeNight, Send, Drafts, Inbox, BeachAccess, Work, Image } from "@mui/icons-material";
 const Sidebar = () => {
   return (
     <Box
@@ -7,9 +19,40 @@ const Sidebar = () => {
       p={2}
       sx={{ display: { xs: "none", sm: "block" } }}
     >
-      Sidebar
+      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}>
+      <ListItem>
+        <ListItemIcon>
+          <ModeNight/>
+        </ListItemIcon>
+        <Switch/>
+      </ListItem>
+      <ListItemButton>
+        <ListItemAvatar>
+          <Avatar variant="rounded">
+            <Image />
+          </Avatar >
+        </ListItemAvatar>
+        <ListItemText primary="Photos"/>
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemAvatar>
+          <Avatar variant="rounded">
+            <Work />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="Work"/>
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemAvatar>
+          <Avatar variant="rounded">
+            <BeachAccess/>
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText primary="Vacation"/>
+      </ListItemButton>
+    </List>
     </Box>
-  );
-};
+  )
+}
 
 export default Sidebar;

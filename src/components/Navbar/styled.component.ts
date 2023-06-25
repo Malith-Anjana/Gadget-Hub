@@ -9,7 +9,7 @@ export const Search = styled('div')(({theme})=>({
   backgroundColor:'whitesmoke',
   padding: '0 10px',
   borderRadius: 20,
-  width:100
+  width:'50%'
 }))
 
 export const Icons = styled(Box)(({theme})=>({

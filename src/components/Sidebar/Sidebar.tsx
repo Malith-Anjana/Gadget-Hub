@@ -50,7 +50,11 @@ const Sidebar = () => {
             <Inbox />
           </SideIcon>
 
-          <ListItemText primary="Inbox" sx={{ padding: 0, margin: 0 }} />
+          <ListItemText sx={{ padding: 0, margin: 0 }}>
+          <Typography color={theme.palette.secondary.light} fontSize="medium" mr={1} fontWeight="500">
+                 {"Mode"}
+                </Typography>
+          </ListItemText>
         </ListItemButton>
         <ListItemButton
           selected={selectedIndex === 1}
@@ -59,7 +63,11 @@ const Sidebar = () => {
           <SideIcon>
             <Drafts />
           </SideIcon>
-          <ListItemText primary="Drafts" />
+          <ListItemText sx={{ padding: 0, margin: 0 }}>
+          <Typography color={theme.palette.secondary.light} fontSize="medium" mr={1} fontWeight="500">
+                 {"Draft"}
+                </Typography>
+          </ListItemText>
         </ListItemButton>
       </List>
     </Box>

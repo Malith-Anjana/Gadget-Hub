@@ -12,7 +12,7 @@ export const Search = styled('div')(({theme})=>({
   width:'50%'
 }))
 
-export const Icons = styled(Box)(({theme})=>({
+export const Icons = styled(Box)<typeof Box>(({theme})=>({
   display:'none',
   gap:10,
   alignItems:'center',

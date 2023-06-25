@@ -15,16 +15,26 @@ const Banner = () => {
     },
   ];
   return (
-    <Carousel>
+    <Carousel sx={{ display: { xs: "none", sm: "block" } }}>
       {items.map((item, i) => (
         <Box key={i}>
-            <img src={item.img} height="300px" style={{objectFit:'cover'}} loading="lazy" />
+          <img
+            src={item.img}
+            height="300px"
+            style={{ objectFit: "cover" }}
+            loading="lazy"
+          />
           <div style={{ position: "absolute", top: " 60%", left: "20px" }}>
-            <Typography color={theme.palette.primary.light}>
-              <h2>{item.name}</h2>
-              <p>{item.description}</p>
+            <Typography variant="h5" color={theme.palette.primary.light}>
+              {item.name}
             </Typography>
-           <Button variant='contained' color="secondary">Shop Now</Button>
+            <Typography variant="body1" color={theme.palette.primary.light}>
+              {item.description}
+            </Typography>
+
+            <Button variant="contained" color="secondary">
+              Shop Now
+            </Button>
           </div>
         </Box>
       ))}

@@ -14,7 +14,6 @@ function Home() {
         <Divider orientation="vertical" flexItem />
         <Box flex={4} bgcolor={"secondary"} pt={1}>
           <Banner />
-          <Sorter />
           <Products />
         </Box>
         <Divider orientation="vertical" flexItem />

@@ -20,12 +20,13 @@ const Rightbar = () => {
       flex={2}
       pt={1}
       mr={2}
+      minWidth={'120px'}
       height={700}
-      sx={{ display: { xs: "none", sm: "block" } ,overflowY: 'scroll' }}
+      sx={{ display: { xs: "none", md: "block" } ,overflowY: 'scroll' }}
     >
       <ImageList>
       <ImageListItem key="Subheader" cols={2}>
-       <Typography ml={1} fontWeight='800'>Newest Arrival</Typography>
+       <Typography ml={1} mb={2} fontWeight='800'>Newest Arrival</Typography>
       </ImageListItem>
       {itemData.map((item, index) => (
         <ImageListItem key={index}>

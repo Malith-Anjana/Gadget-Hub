@@ -15,7 +15,7 @@ const Banner = () => {
     },
   ];
   return (
-    <Carousel indicators={false} sx={{ display: { xs: "none", sm: "block" } }}>
+    <Carousel indicators={false} sx={{ display: { xs: "none", md: "flex" } }}>
       {items.map((item, i) => (
         <Box key={i}>
           <img

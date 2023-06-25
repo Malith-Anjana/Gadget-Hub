@@ -11,12 +11,12 @@ import {
   Stack,
   Link,
   Rating,
-  IconButton
+  IconButton,
 } from "@mui/material";
-import {useState} from 'react'
+import { useState } from "react";
 
 const Products = () => {
-  const [isFavourite, setIsFavourite] = useState<boolean>(false)
+  const [isFavourite, setIsFavourite] = useState<boolean>(false);
   return (
     <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
       <Grid item xs={12} md={6} lg={4}>
@@ -24,6 +24,7 @@ const Products = () => {
           sx={{
             width: "100%",
             boxShadow: "lg",
+            marginTop: "10px",
             borderRadius: { xs: 3, lg: 2 },
           }}
         >
@@ -34,15 +35,19 @@ const Products = () => {
             image="https://images.unsplash.com/photo-1612690669207-fed642192c40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGdhZGdldHN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60"
           />
           <CardContent>
-            <Stack direction="row" justifyContent="space-between">
+            <Stack direction="row" p={0} m={0} justifyContent="space-between">
               <Typography
                 color="grey"
                 sx={{ fontWeight: "400", fontSize: "small" }}
               >
                 Bluetooth Headset
               </Typography>
-              <IconButton color={isFavourite?'primary': 'secondary'} onClick={()=> setIsFavourite(prev => !prev)} aria-label="add an alarm">
-              {isFavourite ? <Favorite/>: <FavoriteBorder />}
+              <IconButton
+                color={isFavourite ? "primary" : "secondary"}
+                onClick={() => setIsFavourite((prev) => !prev)}
+                aria-label="add an alarm"
+              >
+                {isFavourite ? <Favorite /> : <FavoriteBorder />}
               </IconButton>
             </Stack>
             <Link href="#" underline="always">

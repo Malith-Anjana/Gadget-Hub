@@ -15,12 +15,13 @@ const Banner = () => {
     },
   ];
   return (
-    <Carousel sx={{ display: { xs: "none", sm: "block" } }}>
+    <Carousel indicators={false} sx={{ display: { xs: "none", sm: "block" } }}>
       {items.map((item, i) => (
         <Box key={i}>
           <img
             src={item.img}
             height="300px"
+            width="100%"
             style={{ objectFit: "cover" }}
             loading="lazy"
           />

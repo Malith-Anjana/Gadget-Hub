@@ -1,7 +1,6 @@
 import { Favorite, FavoriteBorderOutlined} from "@mui/icons-material";
 import { Box, IconButton, ImageList, ImageListItem, ImageListItemBar, Typography } from "@mui/material";
 import {useState} from 'react'
-import { theme } from "../../theme/theme";
 
 
 const Rightbar = () => {
@@ -19,8 +18,8 @@ const Rightbar = () => {
   return (
     <Box
       flex={2}
-      bgcolor={"yellow"}
       pt={1}
+      mr={2}
       height={700}
       sx={{ display: { xs: "none", sm: "block" } ,overflowY: 'scroll' }}
     >

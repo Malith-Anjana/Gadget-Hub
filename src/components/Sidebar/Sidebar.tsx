@@ -6,31 +6,51 @@ import {
   ListItem,
   Switch,
   Typography,
+  Card,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Inbox, Drafts, Brightness4 } from "@mui/icons-material";
 import { SideIcon } from "./styled.component";
 import { theme } from "../../theme/theme";
 import Sorter from "../Sorter/Sorter";
+
 const Sidebar = () => {
+  const MODE: string = localStorage.getItem('MODE')||'light';
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [mode, setMode] = useState(MODE);
+
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number
   ) => {
     setSelectedIndex(index);
   };
+  
+  console.log(MODE);
+  
+  useEffect(() => {
+    localStorage.setItem('MODE',mode)
+
+  }, [mode])
+
+  const modeSelecter = () => {
+    console.log(mode);
+    setMode(prev => prev === 'light'? "dark":"light")
+    
+  };
+
   return (
     <Box
       flex={1}
-      bgcolor={"white"}
+      bgcolor={"background.default"}
+      color={"text.primary"}
       pt={1}
       sx={{ display: { xs: "none", sm: "block", minWidth: "180px" } }}
     >
+      <Card variant="outlined" sx={{ width: "100%", borderRadius:'10px'}}  sx={{ position: "fixed" }}>
       <List
         component="nav"
         aria-label="main mailbox folders"
-        sx={{ position: "fixed" }}
       >
         <ListItem>
           <SideIcon>
@@ -39,7 +59,11 @@ const Sidebar = () => {
             </Typography>
             <Brightness4 />
           </SideIcon>
-          <Switch sx={{ margin: 0 }} />
+          <Switch
+            checked={mode==='dark'?true:false}
+            sx={{ margin: 0 }}
+            onClick={() => modeSelecter()}
+          />
         </ListItem>
         <ListItem sx={{ paddingBottom: 0 }}>
           <Typography
@@ -51,7 +75,7 @@ const Sidebar = () => {
           </Typography>
         </ListItem>
         <ListItem>
-          <Sorter/>
+          <Sorter />
         </ListItem>
         <ListItem sx={{ paddingBottom: 0 }}>
           <Typography
@@ -99,6 +123,7 @@ const Sidebar = () => {
           </ListItemText>
         </ListItemButton>
       </List>
+      </Card>
     </Box>
   );
 };

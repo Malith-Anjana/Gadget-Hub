@@ -1,7 +1,14 @@
 import { createTheme } from '@mui/material/styles';
+import { useEffect } from 'react';
+
+export const getMode =():string => {
+  return  localStorage.getItem('MODE') || 'light';
+
+}
 
 export const theme = createTheme({
   palette: {
+    mode:getMode(),
     primary: {
       main: '#fc0362',
       light:'#fff'

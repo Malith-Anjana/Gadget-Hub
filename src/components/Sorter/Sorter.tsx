@@ -3,32 +3,12 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
-  Paper,
   Select,
   Stack,
 } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
-import Product from "../Product/Product";
+
 const Sorter = () => {
-  const [isSticky, setIsSticky] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const cardElement = cardRef.current;
-      if (cardElement) {
-        const rect = cardElement.getBoundingClientRect();
-        console.log(rect);
-        
-        setIsSticky(rect.top <= 0);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   return (
    <Box p={0} flex={1} >
 

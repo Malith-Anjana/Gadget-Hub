@@ -11,9 +11,8 @@ const Cart = () => {
   return (
     <Box p={0.5} minHeight={"100vh"}>
       <Stack direction={{xs:'column', sm:'row'}} spacing={2} justifyContent={"space-between"}>
-        <Box sx={{ display: { xs: "none", md: "flex", minWidth: "180px" } }}>
           <Sidebar />
-        </Box>
+
 
         
           <CartItems />

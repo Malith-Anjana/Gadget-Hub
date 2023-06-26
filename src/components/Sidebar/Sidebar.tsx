@@ -45,9 +45,9 @@ const Sidebar = () => {
       bgcolor={"background.default"}
       color={"text.primary"}
       pt={1}
-      sx={{ display: { xs: "none", sm: "block", minWidth: "180px" } }}
+      sx={{ display: {xs:'none', md: "none", lg: "block", minWidth: "180px" } }}
     >
-      <Card variant="outlined" sx={{ width: "100%", borderRadius:'10px'}}  sx={{ position: "fixed" }}>
+      <Card variant="outlined" sx={{ borderRadius:'10px', position: "fixed"}}  >
       <List
         component="nav"
         aria-label="main mailbox folders"

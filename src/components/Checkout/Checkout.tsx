@@ -11,7 +11,7 @@ import {
 
 const Checkout = () => {
   return (
-    <Box flex={1.5} display={"flex"}>
+    <Box flex={1.5} display={"flex"} p={1}>
       <Card
         variant="outlined"
         sx={{ width: "100%",padding:2, minWidth: 220, borderRadius: "10px" }}

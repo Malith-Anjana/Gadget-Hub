@@ -13,20 +13,18 @@ import {
 const Profile = () => {
   return (
     <Box
-      bgcolor="red"
-      sx={{height:'100%'}}
+      sx={{height:'100vh'}}
       display="flex"
-      position='initial'
       justifyContent="center"
-      alignItems="center"
     >
       <Card
         variant="outlined"
-        sx={{
+          sx={{
           width: { xs: "100%", sm: 400 },
           padding: 2,
           borderRadius: "10px",
           height: 400,
+          margin:'5%'
         }}
       >
         <CardContent>
@@ -36,13 +34,13 @@ const Profile = () => {
             fontWeight={"700"}
             component="div"
           >
-            Invoice
+            Profile
           </Typography>
-          <Box bgcolor={"red"} pt={1} display="flex" justifyContent="center">
+          <Box pt={1} display="flex" justifyContent="center">
             <Avatar
               alt="Remy Sharp"
               src="/static/images/avatar/1.jpg"
-              sx={{ width: 90, height: 90 }}
+              sx={{ width: 100, height: 100 }}
             />
           </Box>
           <Stack
@@ -52,66 +50,71 @@ const Profile = () => {
             justifyContent={"space-between"}
           >
             <Typography variant="body2" sx={{ fontSize: 18 }}>
-              Sub Total
+              Name
             </Typography>
             <Typography
               variant="body2"
               sx={{ fontSize: 18 }}
               fontWeight={"600"}
             >
-              $1000
+             Malith
             </Typography>
           </Stack>
           <Stack
-            mt={1}
+            mt={2}
             direction={"row"}
             display={"flex"}
             justifyContent={"space-between"}
           >
-            <Typography
-              variant="body2"
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-            >
-              Shipping Fee
+            <Typography variant="body2" sx={{ fontSize: 18 }}>
+              Email
             </Typography>
             <Typography
               variant="body2"
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
+              sx={{ fontSize: 18 }}
               fontWeight={"600"}
             >
-              $1000
+             Malith@gmal.com
             </Typography>
           </Stack>
-          <Divider
-            orientation="horizontal"
-            sx={{ marginTop: "20px" }}
-            flexItem
-          />
           <Stack
+            mt={2}
             direction={"row"}
             display={"flex"}
-            mt={2}
             justifyContent={"space-between"}
-            alignItems={"center"}
           >
-            <Typography variant="body2" sx={{ fontSize: 16 }} mt={1}>
-              Shipping Fee
+            <Typography variant="body2" sx={{ fontSize: 18 }}>
+              Level
             </Typography>
             <Typography
               variant="body2"
-              mt={1}
-              sx={{ fontSize: 23 }}
-              fontWeight={"700"}
+              sx={{ fontSize: 18 }}
+              fontWeight={"600"}
             >
-              $1000
+             Silver
+            </Typography>
+          </Stack>
+          <Stack
+            mt={2}
+            direction={"row"}
+            display={"flex"}
+            justifyContent={"space-between"}
+          >
+            <Typography variant="body2" sx={{ fontSize: 18 }}>
+              Country
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{ fontSize: 18 }}
+              fontWeight={"600"}
+            >
+             Sri Lanka
             </Typography>
           </Stack>
         </CardContent>
         <CardActions>
           <Button variant="contained" fullWidth>
-            Checkout
+            Done
           </Button>
         </CardActions>
       </Card>

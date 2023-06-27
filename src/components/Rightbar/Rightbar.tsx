@@ -1,7 +1,7 @@
 import { Favorite, FavoriteBorderOutlined} from "@mui/icons-material";
 import {Box, Card, IconButton, ImageList, ImageListItem, ImageListItemBar, Typography } from "@mui/material";
 import {useState} from 'react'
-import { ScrollableBox, ScrollableCard } from "./styled.component";
+import { ScrollableCard } from "./styled.component";
 
 
 const Rightbar = () => {

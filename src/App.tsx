@@ -13,8 +13,8 @@ function App() {
         <Navbar />
         {/* <WishList/> */}
         {/* <Cart/> */}
-        <Home/>
-        {/* <Profile/> */}
+        {/* <Home/> */}
+        <Profile/>
       </Box>
   );
 }

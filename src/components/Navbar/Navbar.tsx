@@ -20,7 +20,7 @@ const Navbar = () => {
 
         <DevicesOtherIcon sx={{ display: { xs: "block", sm: "none" } }} />
         <Search>
-          <InputBase placeholder="Search" />
+          <InputBase placeholder="Search" sx={{color:theme.palette.secondary.main}} />
         </Search>
         <Icons>
           <IconButton aria-label="cart">

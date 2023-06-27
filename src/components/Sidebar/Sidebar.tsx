@@ -39,6 +39,7 @@ const Sidebar = () => {
 
   return (
     <Box
+    display={'block'}
       flex={1}
       bgcolor={"background.default"}
       color={"text.primary"}

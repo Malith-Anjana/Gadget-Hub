@@ -4,17 +4,19 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import WishList from "./pages/WishList";
 import Profile from "./pages/Profile";
+import Login from "./Login";
 
 function App() {
 
   return (
 
       <Box bgcolor={'background.default'}  sx={{height:'100%'}} color={'text.primary'}>
-        <Navbar />
+        {/* <Navbar /> */}
         {/* <WishList/> */}
         {/* <Cart/> */}
         {/* <Home/> */}
-        <Profile/>
+        {/* <Profile/> */}
+        <Login/>
       </Box>
   );
 }

@@ -1,6 +1,7 @@
 import { Favorite, FavoriteBorderOutlined} from "@mui/icons-material";
-import { Box, IconButton, ImageList, ImageListItem, ImageListItemBar, Typography } from "@mui/material";
+import {Box, Card, IconButton, ImageList, ImageListItem, ImageListItemBar, Typography } from "@mui/material";
 import {useState} from 'react'
+import { ScrollableBox, ScrollableCard } from "./styled.component";
 
 
 const Rightbar = () => {
@@ -19,48 +20,50 @@ const Rightbar = () => {
     <Box
       flex={2}
       pt={1}
-      mr={2}
+      mr={1}
       minWidth={'120px'}
-      height={700}
-      sx={{ display: { xs: "none", md: "block" } ,overflowY: 'scroll' }}
+      width='100%'
+      sx={{ display: { xs: "none",sm:'flex',md:'flex' } }}
     >
-      <ImageList>
-      <ImageListItem key="Subheader" cols={2}>
-       <Typography ml={1} mb={2} fontWeight='800'>Newest Arrival</Typography>
-      </ImageListItem>
-      {itemData.map((item, index) => (
-        <ImageListItem key={index}>
-          <img
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              alt={item.title}
-              loading="lazy"
-            />
-          <ImageListItemBar
-            title={item.title}
-            subtitle={item.author}
-            actionIcon={
-              !favItems.includes(index) ? <IconButton
-              onClick={()=> onClickFav(index)}
-                sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                aria-label={`info about ${item.title}`}
-              >
-                <FavoriteBorderOutlined/>
-              </IconButton>
-               :<IconButton
-               onClick={()=> onClickFav(index)}
-               color="primary"
-                 aria-label={`info about ${item.title}`}
-               >
-                 <Favorite/>
-               </IconButton>
-              
-            }
-          />
+      <ScrollableCard variant="outlined" sx={{flex:1, height:600,overflow:'scroll' }}>
+        <ImageList sx={{margin:1}} >
+        <ImageListItem key="Subheader" cols={2}>
+         <Typography p={1} fontWeight='800' variant='h6'>Newest Arrival</Typography>
         </ImageListItem>
-      ))}
-    </ImageList>
-      
+        {itemData.map((item, index) => (
+          <ImageListItem key={index}>
+            <img
+                src={`${item.img}?w=248&fit=crop&auto=format`}
+                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                alt={item.title}
+                loading="lazy"
+              />
+            <ImageListItemBar
+              title={item.title}
+              subtitle={item.author}
+              actionIcon={
+                !favItems.includes(index) ? <IconButton
+                onClick={()=> onClickFav(index)}
+                  sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                  aria-label={`info about ${item.title}`}
+                >
+                  <FavoriteBorderOutlined/>
+                </IconButton>
+                 :<IconButton
+                 onClick={()=> onClickFav(index)}
+                 color="primary"
+                   aria-label={`info about ${item.title}`}
+                 >
+                   <Favorite/>
+                 </IconButton>
+        
+              }
+            />
+          </ImageListItem>
+        ))}
+            </ImageList>
+        
+      </ScrollableCard>
     </Box>
   );
 };

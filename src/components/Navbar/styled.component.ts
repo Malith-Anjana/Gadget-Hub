@@ -1,4 +1,4 @@
-import { Toolbar, styled, Box, Badge, BadgeProps } from "@mui/material";
+import { Toolbar, styled, Box, Badge, BadgeProps, BoxProps } from "@mui/material";
 
 export const StyledToolbar = styled(Toolbar)({
     display: "flex",
@@ -12,7 +12,7 @@ export const Search = styled('div')(({theme})=>({
   width:'50%'
 }))
 
-export const Icons = styled(Box)<typeof Box>(({theme})=>({
+export const Icons = styled(Box)<BoxProps>(({theme})=>({
   display:'none',
   gap:10,
   alignItems:'center',

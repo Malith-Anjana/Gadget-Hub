@@ -9,7 +9,7 @@ import {useState} from 'react'
 const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
   return (
-    <AppBar sx={{ bgcolor: "" }} position="sticky">
+    <AppBar position="sticky">
       <StyledToolbar>
         <Typography
           variant="h6"

@@ -5,18 +5,20 @@ import Cart from "./pages/Cart";
 import WishList from "./pages/WishList";
 import Profile from "./pages/Profile";
 import Login from "./Login";
+import Signup from "./Signup";
 
 function App() {
 
   return (
 
       <Box bgcolor={'background.default'}  sx={{height:'100%'}} color={'text.primary'}>
-        {/* <Navbar /> */}
+        <Navbar />
         {/* <WishList/> */}
         {/* <Cart/> */}
-        {/* <Home/> */}
+        <Home/>
         {/* <Profile/> */}
-        <Login/>
+        {/* <Login/> */}
+        {/* <Signup/> */}
       </Box>
   );
 }

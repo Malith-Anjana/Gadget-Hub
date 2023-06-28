@@ -18,6 +18,7 @@ const Sidebar = () => {
   const MODE: string = localStorage.getItem("MODE") || "light";
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [mode, setMode] = useState(MODE);
+  const [categories, setCategories] = useState<string[]>([]);
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -30,6 +31,9 @@ const Sidebar = () => {
 
   useEffect(() => {
     localStorage.setItem("MODE", mode);
+    fetch("https://dummyjson.com/products/categories")
+      .then((res) => res.json())
+      .then((json) => setCategories(json));
   }, [mode]);
 
   const modeSelecter = () => {
@@ -39,7 +43,7 @@ const Sidebar = () => {
 
   return (
     <Box
-    display={'block'}
+      display={"flex"}
       flex={1}
       bgcolor={"background.default"}
       color={"text.primary"}
@@ -90,42 +94,36 @@ const Sidebar = () => {
               {"Categories"}
             </Typography>
           </ListItem>
-          <ListItemButton
-            selected={selectedIndex === 0}
-            onClick={(event) => handleListItemClick(event, 0)}
+          <Box
+            overflow="scroll"
+            maxHeight={350}
+            sx={{
+              overflowX:'hidden'
+            }}
           >
-            <SideIcon>
-              <Inbox />
-            </SideIcon>
-            <ListItemText sx={{ padding: 0, margin: 0 }}>
-              <Typography
-                color={theme.palette.secondary.light}
-                fontSize="medium"
-                mr={1}
-                fontWeight="500"
+            {categories.map((category, index) => (
+              <ListItemButton
+                key={index}
+                selected={selectedIndex === index}
+                onClick={(event) => handleListItemClick(event, index)}
               >
-                {"Mode"}
-              </Typography>
-            </ListItemText>
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 1}
-            onClick={(event) => handleListItemClick(event, 1)}
-          >
-            <SideIcon>
-              <Drafts />
-            </SideIcon>
-            <ListItemText sx={{ padding: 0, margin: 0 }}>
-              <Typography
-                color={theme.palette.secondary.light}
-                fontSize="medium"
-                mr={1}
-                fontWeight="500"
-              >
-                {"Draft"}
-              </Typography>
-            </ListItemText>
-          </ListItemButton>
+                <SideIcon>
+                  <Drafts />
+                </SideIcon>
+                <ListItemText sx={{ padding: 0, margin: 0 }}>
+                  <Typography
+                    color={theme.palette.secondary.light}
+                    fontSize="medium"
+                    mr={1}
+                    fontWeight="500"
+                  >
+                    {category.charAt(0).toUpperCase() +
+                      category.slice(1).toLowerCase()}
+                  </Typography>
+                </ListItemText>
+              </ListItemButton>
+            ))}
+          </Box>
         </List>
       </FixedCard>
     </Box>

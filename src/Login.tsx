@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   Container,
+  Link,
   TextField,
   Typography,
 } from "@mui/material";
@@ -13,12 +14,13 @@ const Login = () => {
     <Box
       height={"100vh"}
       display="flex"
+      paddingY={4}
       alignItems="center"
       justifyContent="center"
     >
       <Card
         variant="outlined"
-        sx={{ padding: 4, height: "50vh", marginX: "10px", maxWidth: 250, borderRadius:'15px' }}
+        sx={{ padding: 4, marginX: "10px", maxWidth: 250, borderRadius:'15px' }}
       >
         <form>
           <Typography fontWeight='600' fontSize={28}  textAlign='center'>Login</Typography>
@@ -47,7 +49,24 @@ const Login = () => {
             Sign In
           </Button>
         </form>
+        <Box flexDirection='row' mt={2}  display='flex' justifyContent='space-between'>
+          <Link href='#' variant='body2' underline='none'>
+          Back
+          </Link>
+ 
+            <Typography variant='body2' ml={10}>
+             Are you new?
+            </Typography>
+          <Link href='#' variant='body2' underline='none'>
+          Signup
+          </Link>
+
+
+
+
+        </Box>
       </Card>
+
     </Box>
   );
 };

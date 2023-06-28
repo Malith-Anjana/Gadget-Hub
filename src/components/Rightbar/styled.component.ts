@@ -6,8 +6,8 @@ export const ScrollableCard= styled(Card)<CardProps>(({theme}) => ({
       '&::-webkit-scrollbar': {
         display: 'none',
       },
-      msOverflowStyle: 'none',  /* IE and Edge */
-      scrollbarWidth: 'none',  /* Firefox */
+      msOverflowStyle: 'none',
+      scrollbarWidth: 'none',
      }));
   
   

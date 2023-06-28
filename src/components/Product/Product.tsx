@@ -14,8 +14,13 @@ import {
   IconButton,
 } from "@mui/material";
 import { useState } from "react";
+import { ProductProp } from "../Products/Products";
 
-const Product = () => {
+interface Prop{
+  product: ProductProp
+}
+
+const Product = ({product}: Prop) => {
   const [isFavourite, setIsFavourite] = useState<boolean>(false);
   return (
       <Grid item xs={12} md={6} lg={4}>
@@ -30,16 +35,17 @@ const Product = () => {
           <CardMedia
             component="img"
             alt="green iguana"
-            height="160"
-            image="https://images.unsplash.com/photo-1612690669207-fed642192c40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGdhZGdldHN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=700&q=60"
+            height="170"
+            sx={{objectFit:'contain'}}
+            image={product.thumbnail}
           />
           <CardContent>
             <Stack direction="row" p={0} m={0} justifyContent="space-between">
               <Typography
                 color="grey"
-                sx={{ fontWeight: "400", fontSize: "small" }}
+                sx={{ fontWeight: "400", fontSize: "md" }}
               >
-                Bluetooth Headset
+               {product.category.charAt(0).toUpperCase() + product.category.slice(1).toLowerCase()}
               </Typography>
               <IconButton
                 color={isFavourite ? "primary" : "secondary"}
@@ -51,27 +57,26 @@ const Product = () => {
             </Stack>
             <Link href="#" underline="always">
               <Typography fontSize="medium" fontWeight="700">
-                Super Fast Drone
+                {product.title.slice(0,20)+ '...'}
               </Typography>
             </Link>
             <Stack direction="row" spacing={1} alignItems="center">
               <Typography fontSize="large" fontWeight="800">
-                2,900 THB
+                ${product.price}
               </Typography>
               <Chip
-                label="Lowest Price"
-                color="success"
+                label={product.discountPercentage+ '% off'}
+                color="error"
                 size="small"
-                variant="outlined"
               />
             </Stack>
             <Typography
               color="grey"
               sx={{ fontWeight: "500", fontSize: "small" }}
             >
-              (Only <b>7</b> left in stock!)
+              (Only <b>{product.stock}</b> left in stock!)
             </Typography>
-            <Rating name="read-only" value={3} readOnly />
+            <Rating name="read-only" value={product.rating} readOnly />
           </CardContent>
           <CardActions sx={{ padding: 0 }}>
             <Button

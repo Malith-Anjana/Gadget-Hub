@@ -27,7 +27,6 @@ const Sidebar = () => {
     setSelectedIndex(index);
   };
 
-  console.log(MODE);
 
   useEffect(() => {
     localStorage.setItem("MODE", mode);
@@ -37,7 +36,6 @@ const Sidebar = () => {
   }, [mode]);
 
   const modeSelecter = () => {
-    console.log(mode);
     setMode((prev) => (prev === "light" ? "dark" : "light"));
   };
 

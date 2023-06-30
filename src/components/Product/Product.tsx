@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { ProductProp } from "../../hooks/useProduct";
+import SkeletonCard from "../SkeletonCard/SkeletonCard";
 
 interface Prop {
   product: ProductProp;
@@ -36,7 +37,7 @@ const Product = ({ product }: Prop) => {
           component="img"
           alt="green iguana"
           height="170"
-          sx={{ objectFit: "contain" }}
+          sx={{ objectFit: "cover" }}
           image={product.thumbnail}
         />
         <CardContent>
@@ -46,11 +47,10 @@ const Product = ({ product }: Prop) => {
                 product.category.slice(1).toLowerCase()}
             </Typography>
             <IconButton
-              color={isFavourite ? "primary" : "secondary"}
               onClick={() => setIsFavourite((prev) => !prev)}
               aria-label="add an alarm"
             >
-              {isFavourite ? <Favorite /> : <FavoriteBorder />}
+              {isFavourite ? <Favorite color="primary" /> : <FavoriteBorder color="disabled" />}
             </IconButton>
           </Stack>
           <Link href="#" underline="always">

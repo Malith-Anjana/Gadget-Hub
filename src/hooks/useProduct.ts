@@ -26,26 +26,28 @@ interface FetchProductsType {
 export const useProducts = () => {
   const [products, setproducts] = useState<ProductProp[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
-
+    setIsLoading(true);
     apiClient
       .get<FetchProductsType>("/products?limit=100", {
         signal: controller.signal,
       })
-      .then((res) => setproducts(res.data.products))
+      .then((res) => {
+        setIsLoading(false);
+        setproducts(res.data.products)})
       .catch((err) => {
         if (err instanceof CanceledError) {
-          console.log("test");
+          setIsLoading(false)
           return;
         } else {
-          console.log('hit', err);
-          
+          setIsLoading(false)
           setError(err.message)};
       });
 
     return () => controller.abort();
   }, []);
 
-  return { products, error };
+  return { products, error, isLoading };
 };

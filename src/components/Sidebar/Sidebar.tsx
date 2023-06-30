@@ -6,14 +6,30 @@ import {
   ListItem,
   Switch,
   Typography,
-  Card,
+  Icon,
 } from "@mui/material";
 import { useState, useEffect } from "react";
-import { Inbox, Drafts, Brightness4 } from "@mui/icons-material";
+import { Brightness4 } from "@mui/icons-material";
 import { FixedCard, SideIcon } from "./styled.component";
 import { theme } from "../../theme/theme";
 import Sorter from "../Sorter/Sorter";
+import {
+  MobileFriendly,
+  LaptopMac,
+  Sanitizer,
+  Handshake,
+  AddBusiness,
+  Home,
+  Chair,
+  Checkroom,
+  RollerSkating,
+  Woman,
+} from "@mui/icons-material";
+import axios from "axios";
 
+interface IconMapType {
+  [key: string]: React.ElementType;
+}
 const Sidebar = () => {
   const MODE: string = localStorage.getItem("MODE") || "light";
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -27,13 +43,36 @@ const Sidebar = () => {
     setSelectedIndex(index);
   };
 
+  const iconMap: IconMapType = {
+    smartphones: MobileFriendly,
+    laptops: LaptopMac,
+    fragrances: Sanitizer,
+    skincare: Handshake,
+    groceries: AddBusiness,
+    "home-decoration": Home,
+    furniture: Chair,
+    tops: Checkroom,
+    "womens-dresses": Woman,
+    "womens-shoes": RollerSkating,
+  };
+
+  const getIconComponent = (iconName: string): React.ReactElement => {
+    console.log(iconName);
+
+    const IconComponent = iconMap[iconName];
+    return <IconComponent />;
+  };
 
   useEffect(() => {
     localStorage.setItem("MODE", mode);
-    fetch("https://dummyjson.com/products/categories")
-      .then((res) => res.json())
-      .then((json) => setCategories(json));
+    fetchCategories();
   }, [mode]);
+
+  const fetchCategories = async () => {
+    axios
+      .get("https://dummyjson.com/products/categories")
+      .then((res) => setCategories(res.data.slice(0, 9)));
+  };
 
   const modeSelecter = () => {
     setMode((prev) => (prev === "light" ? "dark" : "light"));
@@ -96,7 +135,7 @@ const Sidebar = () => {
             overflow="scroll"
             maxHeight={350}
             sx={{
-              overflowX:'hidden'
+              overflowX: "hidden",
             }}
           >
             {categories.map((category, index) => (
@@ -106,7 +145,7 @@ const Sidebar = () => {
                 onClick={(event) => handleListItemClick(event, index)}
               >
                 <SideIcon>
-                  <Drafts />
+                  <Icon>{getIconComponent(category)}</Icon>
                 </SideIcon>
                 <ListItemText sx={{ padding: 0, margin: 0 }}>
                   <Typography

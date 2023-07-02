@@ -15,4 +15,4 @@ interface ProductProp {
   images: string[];
 }
   
-export const useProduct = ()=>useData<ProductProp>('/products');
+export const useProduct = (selectedCategory: string |null)=>useData<ProductProp>('/products', {params:{category: selectedCategory}}, [selectedCategory]);

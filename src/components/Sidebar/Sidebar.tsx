@@ -31,7 +31,11 @@ import { useCategory } from "../../hooks/useCategory";
 interface IconMapType {
   [key: string]: React.ElementType;
 }
-const Sidebar = () => {
+
+interface Props {
+  onSelectCategory: (category : string)=> void
+}
+const Sidebar = ({onSelectCategory}: Props) => {
   const MODE: string = localStorage.getItem("MODE") || "light";
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [mode, setMode] = useState(MODE);
@@ -40,10 +44,12 @@ const Sidebar = () => {
   const { data, error, isLoading , count} = useCategory();
 
   const handleListItemClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    category: string,
     index: number
   ) => {
     setSelectedIndex(index);
+    onSelectCategory(category);
+    
   };
 
   const iconMap: IconMapType = {
@@ -139,7 +145,7 @@ const Sidebar = () => {
               <ListItemButton
                 key={index}
                 selected={selectedIndex === index}
-                onClick={(event) => handleListItemClick(event, index)}
+                onClick={() => handleListItemClick(category, index)}
               >
                 <SideIcon>
                   <Icon>{getIconComponent(category)}</Icon>

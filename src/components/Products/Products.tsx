@@ -3,9 +3,11 @@ import Product from "../Product/Product";
 import NoData from "../NoData/NoData";
 import { useProduct } from "../../hooks/useProduct";
 import SkeletonCard from "../SkeletonCard/SkeletonCard";
-
-const Products = () => {
-  const { data, error, isLoading , count} = useProduct();
+interface Props{
+  selectedCategory : string | null
+}
+const Products = ({selectedCategory}: Props) => {
+  const { data, error, isLoading , count} = useProduct(selectedCategory);
   
   const skeletons = [1, 2, 3, 4,6,,7,8];
   return (

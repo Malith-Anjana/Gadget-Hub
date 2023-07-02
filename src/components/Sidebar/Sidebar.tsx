@@ -26,6 +26,7 @@ import {
   Woman,
 } from "@mui/icons-material";
 import axios from "axios";
+import { useCategory } from "../../hooks/useCategory";
 
 interface IconMapType {
   [key: string]: React.ElementType;
@@ -35,6 +36,8 @@ const Sidebar = () => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [mode, setMode] = useState(MODE);
   const [categories, setCategories] = useState<string[]>([]);
+
+  const { data, error, isLoading , count} = useCategory();
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -50,14 +53,13 @@ const Sidebar = () => {
     skincare: Handshake,
     groceries: AddBusiness,
     "home-decoration": Home,
-    furniture: Chair,
+    furnitures: Chair,
     tops: Checkroom,
     "womens-dresses": Woman,
-    "womens-shoes": RollerSkating,
+    "women-shoes": RollerSkating,
   };
 
   const getIconComponent = (iconName: string): React.ReactElement => {
-    console.log(iconName);
 
     const IconComponent = iconMap[iconName];
     return <IconComponent />;
@@ -65,14 +67,9 @@ const Sidebar = () => {
 
   useEffect(() => {
     localStorage.setItem("MODE", mode);
-    fetchCategories();
+    
   }, [mode]);
 
-  const fetchCategories = async () => {
-    axios
-      .get("https://dummyjson.com/products/categories")
-      .then((res) => setCategories(res.data.slice(0, 9)));
-  };
 
   const modeSelecter = () => {
     setMode((prev) => (prev === "light" ? "dark" : "light"));
@@ -138,7 +135,7 @@ const Sidebar = () => {
               overflowX: "hidden",
             }}
           >
-            {categories.map((category, index) => (
+            {data.map((category, index) => (
               <ListItemButton
                 key={index}
                 selected={selectedIndex === index}

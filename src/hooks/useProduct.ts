@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
-import apiClient from "../api-client";
-import { CanceledError } from 'axios';
+import { useData } from './useData';
 
-export interface ProductProp {
-  id: number;
+interface ProductProp {
+  _id: string;
   title: string;
   price: number;
   discountPercentage: number;
@@ -16,38 +14,5 @@ export interface ProductProp {
   thumbnail: string;
   images: string[];
 }
-
-interface FetchProductsType {
-  products: ProductProp[];
-  total: number;
-  skip: number;
-  limit: number;
-}
-export const useProducts = () => {
-  const [products, setproducts] = useState<ProductProp[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    const controller = new AbortController();
-    setIsLoading(true);
-    apiClient
-      .get<FetchProductsType>("/products?limit=100", {
-        signal: controller.signal,
-      })
-      .then((res) => {
-        setIsLoading(false);
-        setproducts(res.data.products)})
-      .catch((err) => {
-        if (err instanceof CanceledError) {
-          setIsLoading(false)
-          return;
-        } else {
-          setIsLoading(false)
-          setError(err.message)};
-      });
-
-    return () => controller.abort();
-  }, []);
-
-  return { products, error, isLoading };
-};
+  
+export const useProduct = ()=>useData<ProductProp>('/products');

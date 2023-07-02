@@ -1,11 +1,12 @@
 import { Grid, Skeleton, Typography } from "@mui/material";
 import Product from "../Product/Product";
 import NoData from "../NoData/NoData";
-import { useProducts } from "../../hooks/useProduct";
+import { useProduct } from "../../hooks/useProduct";
 import SkeletonCard from "../SkeletonCard/SkeletonCard";
 
 const Products = () => {
-  const { products, error, isLoading } = useProducts();
+  const { data, error, isLoading , count} = useProduct();
+  
   const skeletons = [1, 2, 3, 4,6,,7,8];
   return (
     <>
@@ -14,17 +15,17 @@ const Products = () => {
           {error}!
         </Typography>
       )}
-      {products.length == 0 ? (
+      {count == 0 ? (
         <NoData/>
       ) : (
-        products.length > 0 && (
+        count > 0 && (
           <Typography
             fontSize={20}
             color="text.disabled"
             fontWeight="600"
             p={2}
           >
-            Showing {products.length} Products
+            Showing {count} Products
           </Typography>
         )
       )}
@@ -35,8 +36,8 @@ const Products = () => {
         pt={1}
       >
         {isLoading && skeletons.map((skeleton) => <SkeletonCard key={skeleton}/>)}
-        {products.map((product) => (
-          <Product product={product} key={product.id} />
+        {data.map((product) => (
+          <Product product={product} key={product._id} />
         ))}
       </Grid>
     </>

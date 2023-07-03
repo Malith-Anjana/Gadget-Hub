@@ -8,14 +8,15 @@ import {useState} from 'react'
 import { Divider } from "@mui/material";
 function Home() {
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedSort, setSelectedSort] = useState('');
   return (
     <Box p={0.5}>
       <Stack direction="row" spacing={2} justifyContent={"space-between"}>
-        <Sidebar onSelectCategory={(category)=> setSelectedCategory(category)}/>
+        <Sidebar onSelectSort={(sort)=> setSelectedSort(sort)} onSelectCategory={(category)=> setSelectedCategory(category)}/>
         <Divider orientation="vertical" flexItem />
         <Box flex={4} bgcolor={"secondary"} pt={1}>
           <Banner />
-          <Products selectedCategory={selectedCategory}/>
+          <Products selectedSort={selectedSort} selectedCategory={selectedCategory}/>
         </Box>
         <Divider orientation="vertical" flexItem />
         <Rightbar />

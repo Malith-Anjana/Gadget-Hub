@@ -7,7 +7,11 @@ import {
   Stack,
 } from "@mui/material";
 
-const Sorter = () => {
+interface Props {
+  onSelectSort:(sort: string)=> void;
+}
+
+const Sorter = ({onSelectSort}: Props) => {
 
   return (
    <Box p={0} flex={1} >
@@ -15,26 +19,14 @@ const Sorter = () => {
         <Stack direction='column' spacing={1}>
           <FormControl size="small" sx={{minWidth: 120 }}>
             <InputLabel htmlFor="grouped-select">Grouping</InputLabel>
-            <Select defaultValue="" id="grouped-select" label="Grouping">
+            <Select defaultValue="" id="grouped-select" label="Grouping" onChange={e => onSelectSort(e.target.value)}>
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={1}>Option 1</MenuItem>
-              <MenuItem value={2}>Option 2</MenuItem>
-              <MenuItem value={3}>Option 3</MenuItem>
-              <MenuItem value={4}>Option 4</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl size="small" sx={{minWidth: 120 }}>
-            <InputLabel htmlFor="grouped-select">Grouping</InputLabel>
-            <Select defaultValue="" id="grouped-select" label="Grouping">
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={1}>Option 1</MenuItem>
-              <MenuItem value={2}>Option 2</MenuItem>
-              <MenuItem value={3}>Option 3</MenuItem>
-              <MenuItem value={4}>Option 4</MenuItem>
+              <MenuItem value={'high'}>Price: Low to High</MenuItem>
+              <MenuItem value={'low'}>Price: High to Low</MenuItem>
+              <MenuItem value={'down'}>Rating: High to Low</MenuItem>
+              <MenuItem value={'up'}>Rating: Low to High</MenuItem>
             </Select>
           </FormControl>
         </Stack>

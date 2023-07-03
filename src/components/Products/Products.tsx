@@ -5,9 +5,10 @@ import { useProduct } from "../../hooks/useProduct";
 import SkeletonCard from "../SkeletonCard/SkeletonCard";
 interface Props{
   selectedCategory : string | null
+  selectedSort : string | null
 }
-const Products = ({selectedCategory}: Props) => {
-  const { data, error, isLoading , count} = useProduct(selectedCategory);
+const Products = ({selectedCategory, selectedSort}: Props) => {
+  const { data, error, isLoading , count} = useProduct(selectedCategory, selectedSort);
   
   const skeletons = [1, 2, 3, 4,6,,7,8];
   return (

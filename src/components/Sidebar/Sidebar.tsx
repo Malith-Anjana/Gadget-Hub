@@ -33,9 +33,11 @@ interface IconMapType {
 }
 
 interface Props {
-  onSelectCategory: (category : string)=> void
+  onSelectCategory: (category : string)=> void;
+  onSelectSort: (sort: string)=> void;
 }
-const Sidebar = ({onSelectCategory}: Props) => {
+
+const Sidebar = ({onSelectCategory, onSelectSort}: Props) => {
   const MODE: string = localStorage.getItem("MODE") || "light";
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [mode, setMode] = useState(MODE);
@@ -123,7 +125,7 @@ const Sidebar = ({onSelectCategory}: Props) => {
             </Typography>
           </ListItem>
           <ListItem>
-            <Sorter />
+            <Sorter onSelectSort={(sort)=> onSelectSort(sort)} />
           </ListItem>
           <ListItem sx={{ paddingBottom: 0 }}>
             <Typography

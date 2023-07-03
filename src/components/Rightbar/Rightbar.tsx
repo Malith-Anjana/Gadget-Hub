@@ -1,12 +1,14 @@
 import { Favorite, FavoriteBorderOutlined} from "@mui/icons-material";
-import {Box, Card, IconButton, ImageList, ImageListItem, ImageListItemBar, Typography } from "@mui/material";
+import {Box,CircularProgress,IconButton, ImageList, ImageListItem, ImageListItemBar, Typography } from "@mui/material";
 import {useState} from 'react'
 import { ScrollableCard } from "./styled.component";
+import { useProduct } from "../../hooks/useProduct";
 
 
 const Rightbar = () => {
   const [favItems, setFavItems] = useState<number[]>([])
-
+  const {isLoading, data, error}=useProduct(null , null);
+  const newestData = data.slice(-20)
   const onClickFav = (index: number) => {
     if(favItems.includes(index)){
       setFavItems(favItems.filter((id)=> id !== index))
@@ -30,17 +32,18 @@ const Rightbar = () => {
         <ImageListItem key="Subheader" cols={2}>
          <Typography p={1} fontWeight='800' variant='h6'>Newest Arrival</Typography>
         </ImageListItem>
-        {itemData.map((item, index) => (
+        {!isLoading ? newestData.map((item, index) => (
           <ImageListItem key={index}>
             <img
-                src={`${item.img}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                src={`${item.thumbnail}?w=248&fit=crop&auto=format`}
+                srcSet={`${item.thumbnail}?w=248&fit=crop&auto=format&dpr=2 2x`}
                 alt={item.title}
+
                 loading="lazy"
               />
             <ImageListItemBar
               title={item.title}
-              subtitle={item.author}
+              subtitle={item.category}
               actionIcon={
                 !favItems.includes(index) ? <IconButton
                 onClick={()=> onClickFav(index)}
@@ -60,7 +63,9 @@ const Rightbar = () => {
               }
             />
           </ImageListItem>
-        ))}
+        )): <Box display='flex' justifyContent='center' pt={5}>
+          <CircularProgress color="inherit" />
+        </Box>}
             </ImageList>
         
       </ScrollableCard>

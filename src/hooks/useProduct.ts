@@ -1,6 +1,6 @@
 import { useData } from './useData';
 
-interface ProductProp {
+export interface ProductProp {
   _id: string;
   title: string;
   price: number;

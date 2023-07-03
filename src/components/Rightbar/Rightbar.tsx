@@ -7,7 +7,7 @@ import { useProduct } from "../../hooks/useProduct";
 
 const Rightbar = () => {
   const [favItems, setFavItems] = useState<number[]>([])
-  const {isLoading, data, error}=useProduct(null , null);
+  const {isLoading, data}=useProduct();
   const newestData = data.slice(-20)
   const onClickFav = (index: number) => {
     if(favItems.includes(index)){

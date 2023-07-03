@@ -3,12 +3,12 @@ import Product from "../Product/Product";
 import NoData from "../NoData/NoData";
 import { useProduct } from "../../hooks/useProduct";
 import SkeletonCard from "../SkeletonCard/SkeletonCard";
+import { ProductQuery } from "../../pages/Home";
 interface Props{
-  selectedCategory : string | null
-  selectedSort : string | null
+  productQuery: ProductQuery
 }
-const Products = ({selectedCategory, selectedSort}: Props) => {
-  const { data, error, isLoading , count} = useProduct(selectedCategory, selectedSort);
+const Products = ({productQuery}: Props) => {
+  const { data, error, isLoading , count} = useProduct(productQuery);
   
   const skeletons = [1, 2, 3, 4,6,,7,8];
   return (
@@ -36,7 +36,7 @@ const Products = ({selectedCategory, selectedSort}: Props) => {
         container
         rowSpacing={2}
         columnSpacing={{ xs: 1, sm: 2, md: 2 }}
-        pt={1}
+        py={1}
       >
         {isLoading && skeletons.map((skeleton) => <SkeletonCard key={skeleton}/>)}
         {data.map((product) => (

@@ -1,3 +1,4 @@
+import { ProductQuery } from '../pages/Home';
 import { useData } from './useData';
 
 export interface ProductProp {
@@ -15,4 +16,4 @@ export interface ProductProp {
   images: string[];
 }
   
-export const useProduct = (selectedCategory: string |null, selectedSort: string | null)=>useData<ProductProp>('/products', {params:{category: selectedCategory, sort: selectedSort}}, [selectedCategory, selectedSort]);
+export const useProduct = (productQuery?: ProductQuery)=>useData<ProductProp>('/products', {params:productQuery}, [productQuery]);

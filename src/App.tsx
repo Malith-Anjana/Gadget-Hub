@@ -11,7 +11,7 @@ function App() {
 
   return (
 
-      <Box bgcolor={'background.default'}  sx={{height:'100%'}} color={'text.primary'}>
+      <Box bgcolor='background.default' sx={{height:'100%'}} color={'text.primary'}>
         <Navbar />
         {/* <WishList/> */}
         {/* <Cart/> */}

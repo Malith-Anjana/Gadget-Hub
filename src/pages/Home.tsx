@@ -6,17 +6,21 @@ import Products from "../components/Products/Products";
 import Banner from "../components/Banner/Banner";
 import {useState} from 'react'
 import { Divider } from "@mui/material";
+
+export interface ProductQuery {
+  category: string | null
+  sort:string | null
+}
 function Home() {
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedSort, setSelectedSort] = useState('');
+  const[productQuery, setProductQuery]=useState<ProductQuery>({} as ProductQuery);
   return (
-    <Box p={0.5}>
+    <Box>
       <Stack direction="row" spacing={2} justifyContent={"space-between"}>
-        <Sidebar onSelectSort={(sort)=> setSelectedSort(sort)} onSelectCategory={(category)=> setSelectedCategory(category)}/>
+        <Sidebar onSelectSort={(sort)=> setProductQuery({...productQuery, sort})} onSelectCategory={(category)=> setProductQuery({...productQuery, category})}/>
         <Divider orientation="vertical" flexItem />
         <Box flex={4} bgcolor={"secondary"} pt={1}>
           <Banner />
-          <Products selectedSort={selectedSort} selectedCategory={selectedCategory}/>
+          <Products productQuery={productQuery}/>
         </Box>
         <Divider orientation="vertical" flexItem />
         <Rightbar />

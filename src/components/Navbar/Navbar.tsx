@@ -5,9 +5,14 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { theme } from "../../theme/theme";
-import {useState} from 'react'
-const Navbar = () => {
+import {useRef, useState} from 'react'
+
+interface Props{
+  onSearch: (search: string | null)=> void
+}
+const Navbar = ({onSearch}: Props) => {
   const [open, setOpen] = useState<boolean>(false);
+  const ref = useRef<HTMLInputElement>(null)
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -20,7 +25,8 @@ const Navbar = () => {
 
         <DevicesOtherIcon sx={{ display: { xs: "block", sm: "none" } }} />
         <Search>
-          <InputBase placeholder="Search" sx={{color:theme.palette.secondary.main}} />
+
+          <InputBase inputRef={ref} onChange={()=> onSearch(ref.current? ref.current.value:null)}  placeholder="Search" sx={{color:theme.palette.secondary.main}} />
         </Search>
         <Icons>
           <IconButton aria-label="cart">

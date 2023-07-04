@@ -6,16 +6,17 @@ import WishList from "./pages/WishList";
 import Profile from "./pages/Profile";
 import Login from "./Login";
 import Signup from "./Signup";
+import { useState } from "react";
 
 function App() {
-
+const [searchs, setSearch] = useState<string>('');
   return (
 
       <Box bgcolor='background.default' sx={{height:'100%'}} color={'text.primary'}>
-        <Navbar />
+        <Navbar onSearch={(search)=> setSearch(search) }/>
         {/* <WishList/> */}
         {/* <Cart/> */}
-        <Home/>
+        <Home search={searchs}/>
         {/* <Profile/> */}
         {/* <Login/> */}
         {/* <Signup/> */}

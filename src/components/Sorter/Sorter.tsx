@@ -18,8 +18,8 @@ const Sorter = ({onSelectSort}: Props) => {
 
         <Stack direction='column' spacing={1}>
           <FormControl size="small" sx={{minWidth: 120 }}>
-            <InputLabel htmlFor="grouped-select">Grouping</InputLabel>
-            <Select defaultValue="" id="grouped-select" label="Grouping" onChange={e => onSelectSort(e.target.value)}>
+            <InputLabel htmlFor="grouped-select">Sort By</InputLabel>
+            <Select defaultValue="" id="grouped-select" label="Sort By" onChange={e => onSelectSort(e.target.value)}>
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
